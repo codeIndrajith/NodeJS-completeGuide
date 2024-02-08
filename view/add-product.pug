@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle}
+        style.
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            .header-section {
+                background-color: #8cc20e;
+                padding: 10px;
+            }
+            .nav-section ul{
+                display: flex;
+                align-items: center;
+            }
+            .nav-section ul li {
+                margin-right: 10px;
+                font-size: 1.5rem;
+                list-style: none;
+            }
+            .nav-section ul li a {
+                text-decoration: none;
+            }
+            .main {
+                width: 100%;
+                height: 100vh;
+                margin-top: 15px;
+                padding: 10px;
+            }
+    body 
+        header.header-section
+            nav.nav-section
+                ul
+                    li
+                        a(href="/") Shop
+                    li
+                        a(href="/add-product") Add Product
+        main.main
+            form(action="/add-product", method="POST")
+                input(type="text", name="title")
+                button(type="submit") Add Product

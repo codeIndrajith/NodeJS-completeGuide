@@ -16,7 +16,8 @@ app.use(adminData.routes);
 app.use(shopRouter);
 
 app.use('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, './', 'view', '404.html'));
+  // res.sendFile(path.join(__dirname, './', 'view', '404.html'));
+  res.status(404).render('404', { PageTitle404: '404 Page Not Found' });
 });
 
 app.listen(PORT, () => {
