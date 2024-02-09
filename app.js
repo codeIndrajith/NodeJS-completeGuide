@@ -1,12 +1,14 @@
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const express = require('express');
+const hbs = require('hbs');
 const path = require('path');
 const app = express();
 const PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.set('view engine', 'pug');
+// app.engine('hbs', expressHbs());
+app.set('view engine', 'hbs');
 app.set('views', 'view');
 
 const adminData = require('./routes/admin');
