@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', 'view');
 
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRouter = require('./routes/shop');
 
-app.use(adminData.routes);
+app.use(adminRoutes);
 app.use(shopRouter);
 
 app.use('/', (req, res, next) => {
