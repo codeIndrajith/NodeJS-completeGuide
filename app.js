@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3000;
+const errorHandleController = require('./controllers/ErrorHandle');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.engine('hbs', expressHbs());
@@ -18,10 +19,7 @@ const shopRouter = require('./routes/shop');
 app.use(adminRoutes);
 app.use(shopRouter);
 
-app.use('/', (req, res, next) => {
-  // res.sendFile(path.join(__dirname, './', 'view', '404.html'));
-  res.status(404).render('404', { PageTitle: '404 Page Not Found' });
-});
+app.use(errorHandleController.notFoundProduct);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
