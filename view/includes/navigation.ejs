@@ -1,8 +1,21 @@
 <header class='header-section'>
     <nav class="nav-section">
         <ul>
-            <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a></li>
-            <li><a class="<%= path === '/add-product' ? 'active' : '' %>" href="/add-product">Add Product</a></li>
+            <li>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+            </li>
+            <li>
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+            </li>
+            <li>
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+            </li>
+            <li>
+                <a class="<%= path === '/add-product' ? 'active' : '' %>" href="/add-product">Add Products</a>
+            </li>
+            <li>
+                <a class="<%= path === '/admin-products' ? 'active' : '' %>" href="/admin-products">Admin Products</a>
+            </li>
         </ul>
     </nav>
 </header>
