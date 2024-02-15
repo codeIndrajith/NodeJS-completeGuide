@@ -10,7 +10,9 @@
                     <div class="description">
                         <h3>$<%= product.price %></h3>
                         <p><%= product.description %></p>
-                        <button type="submit">Add to Cart</button>
+                        <form action="/add-product-cart" method="POST">
+                            <button type="submit">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             <% } %>

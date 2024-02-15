@@ -1,4 +1,26 @@
 <%- include('../includes/head.ejs') %>
 <body>
     <%- include('../includes/navigation.ejs') %>
-    <%- include('../includes/end.ejs') %>
+    <main class="main">
+        <% if(prods.length > 0) { %>
+            <% for (let product of prods) { %>
+                <div class="container">
+                    <h2><%= product.title %></h2>
+                    <img class="image" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    <div class="description">
+                        <h3>$<%= product.price %></h3>
+                        <p><%= product.description %></p>
+                        <div>
+                            <a href="/edit-product"><button type="submit">Update</button></a>
+                            <form action="delete-product" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <h1>No Product!!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
