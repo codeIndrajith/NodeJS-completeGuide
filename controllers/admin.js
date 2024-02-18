@@ -1,9 +1,9 @@
 const path = require('path');
 const Product = require('../models/product');
 
-exports.addAddProduct = (req, res, next) => {
+exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(root, 'view', 'add-product.html'));
-  res.render('admin/add-product', {
+  res.render('admin/edit-product', {
     PageTitle: 'Add Product',
     path: '/add-product',
   });
@@ -18,6 +18,18 @@ exports.postAddProduct = (req, res) => {
   const product = new Product(title, imageUrl, price, description);
   product.save();
   res.redirect('/');
+};
+
+exports.getEditProduct = (req, res, next) => {
+  const editMode = req.query.edit;
+  if (editMode) {
+    return res.redirect('/');
+  }
+  res.render('admin/edit-product', {
+    PageTitle: 'Edit Product',
+    path: '/edit-product',
+    editing: editMode,
+  });
 };
 
 exports.getAddProducts = (req, res, next) => {
