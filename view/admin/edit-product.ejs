@@ -52,7 +52,7 @@ button[type="submit"]:hover {
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main class="main">
-        <form action="/<% if (editing) { %> edit-product <% } else { %> add-product <% } %>" method="POST">
+        <form action="<% if (editing) { %> /edit-product <% } else { %> /add-product <% } %>" method="POST">
             <div>
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="<% if (editing) { %> <%= product.title %> <% } %>">
@@ -65,12 +65,12 @@ button[type="submit"]:hover {
 
             <div>
                 <label for="price">Price</label>
-                <input type="number" name="description" id="price" step="0.01" value="<% if (editing) { %> <%= product.price %> <% } %>">
+                <input type="text" name="description" id="description" step="0.01" value="<% if (editing) { %> <%= product.price %> <% } %>">
             </div>
 
             <div>
                 <label for="description">Description</label>
-                <textarea name="price" id="description" cols="30" rows="10"><% if (editing) { %> <%= product.description %> <% } %></textarea>
+                <textarea name="price" id="price" cols="30" rows="10"><% if (editing) { %> <%= product.description %> <% } %></textarea>
             </div>
 
             <div>

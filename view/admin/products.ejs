@@ -11,7 +11,7 @@
                         <h3>$<%= product.price %></h3>
                         <p><%= product.description %></p>
                         <div>
-                            <a href="/edit-product"><button type="submit">Update</button></a>
+                            <a href="/edit-product/<%= product.id %>?edit=true"><button type="submit">Update</button></a>
                             <form action="delete-product" method="POST">
                                 <button type="submit">Delete</button>
                             </form>
