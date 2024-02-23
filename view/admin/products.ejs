@@ -12,7 +12,8 @@
                         <p><%= product.description %></p>
                         <div>
                             <a href="/edit-product/<%= product.id %>?edit=true"><button type="submit">Update</button></a>
-                            <form action="delete-product" method="POST">
+                            <form action="/delete-product" method="POST">
+                                <input type="hidden" name="productId" value="<%= product.id %>">
                                 <button type="submit">Delete</button>
                             </form>
                         </div>
