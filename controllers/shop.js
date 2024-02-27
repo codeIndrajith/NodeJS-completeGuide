@@ -37,6 +37,7 @@ exports.getCart = (req, res, next) => {
   Cart.getCart((cart) => {
     Product.fetchAll((products) => {
       const cartProducts = [];
+
       for (product of products) {
         const cartProductsData = cart.products.find(
           (prod) => prod.id === product.id
@@ -54,6 +55,14 @@ exports.getCart = (req, res, next) => {
         products: cartProducts,
       });
     });
+  });
+};
+
+exports.postCartDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, (product) => {
+    Cart.deleteProduct(prodId, product.price);
+    res.redirect('/cart');
   });
 };
 
