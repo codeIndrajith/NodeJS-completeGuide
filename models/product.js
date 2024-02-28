@@ -29,5 +29,7 @@ module.exports = class Product {
   }
 
   // compare the p location item id equals to param id
-  static findById(id) {}
+  static findById(id) {
+    return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+  }
 };
