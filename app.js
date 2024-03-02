@@ -3,7 +3,7 @@ const routes = require('./routes');
 const express = require('express');
 // const hbs = require('hbs');
 const path = require('path');
-const db = require('./util/database');
+const sequelize = require('./util/database');
 const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
@@ -24,6 +24,11 @@ app.use(shopRouter);
 
 app.use(errorHandleController.notFoundProduct);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-});
+sequelize
+  .sync()
+  .then((result) => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port: ${PORT}`);
+    });
+  })
+  .catch((err) => console.log(err));
