@@ -87,12 +87,14 @@ exports.postDeleteProduct = (req, res, next) => {
   res.redirect('/admin-products');
 };
 
-exports.getAddProducts = (req, res, next) => {
-  Product.fetchAll((product) => {
-    res.render('admin/products', {
-      prods: product,
-      PageTitle: 'Admin Products',
-      path: '/admin-products',
-    });
-  });
+exports.getProducts = (req, res, next) => {
+  Product.findAll()
+    .then((products) => {
+      res.render('admin/products', {
+        prods: products,
+        PageTitle: 'Admin Products',
+        path: '/admin-products',
+      });
+    })
+    .catch((err) => console.log(err));
 };
