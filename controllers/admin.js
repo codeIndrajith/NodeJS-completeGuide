@@ -1,5 +1,6 @@
 const path = require('path');
 const Product = require('../models/product');
+const { where } = require('sequelize');
 
 exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(root, 'view', 'add-product.html'));
@@ -86,8 +87,15 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.deleteById(prodId);
-  res.redirect('/admin-products');
+  Product.destroy({
+    where: {
+      id: prodId,
+    },
+  })
+    .then((result) => {
+      res.redirect('/admin-products');
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
