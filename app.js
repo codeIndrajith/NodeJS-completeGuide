@@ -4,6 +4,8 @@ const express = require('express');
 // const hbs = require('hbs');
 const path = require('path');
 const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
@@ -24,8 +26,11 @@ app.use(shopRouter);
 
 app.use(errorHandleController.notFoundProduct);
 
+Product.belongsTo(User, { constraint: true, onDelete: 'CASCADE' });
+User.hasMany(Product);
+
 sequelize
-  .sync()
+  .sync({ force: true })
   .then((result) => {
     app.listen(PORT, () => {
       console.log(`Server is running on port: ${PORT}`);
