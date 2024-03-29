@@ -24,13 +24,13 @@ exports.postAddProduct = (req, res) => {
   //     res.redirect('/');
   //   })
   //   .catch((err) => console.log(err));
-
-  Product.create({
-    title: title,
-    price: price,
-    imageUrl: imageUrl,
-    description: description,
-  })
+  req.user
+    .createProduct({
+      title: title,
+      price: price,
+      imageUrl: imageUrl,
+      description: description,
+    })
     .then((result) => {
       res.redirect('/');
     })
